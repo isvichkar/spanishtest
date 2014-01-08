@@ -1,0 +1,35 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+  "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+  <title></title>
+  <script type="text/javascript" src="Pronoun.js"></script>
+  <script type="text/javascript">
+    var endings = ["ar", "er", "ir"]
+    var pronProvider = new PronounProvider();
+
+    function getEnding () {
+      var norm = Math.random();
+      return endings[Math.round(norm * 2)];
+    }
+
+    for (var i = 0; i < 100; i++) {
+      var pronoun = pronProvider.getRandomPronoun();
+      var infinitiveEnding = getEnding();
+      var conjugatedEnding = pronoun.getConjugatedEnding(infinitiveEnding);
+
+      var result = pronoun.name + ": [" + infinitiveEnding + " -> " + conjugatedEnding + "]";
+      console.log(result);
+    }
+
+    var prns = pronProvider.getAllPronouns();
+    for (var i = 0; i < prns.length; i++) {
+      console.log(prns[i]);
+    }
+
+  </script>
+</head>
+<body>
+
+</body>
+</html>

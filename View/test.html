@@ -1,0 +1,36 @@
+<!DOCTYPE>
+<html ng-app="spanishTestApp">
+<head>
+    <title>Test How Well Can You Conjugate Spanish Verbs</title>
+    <script type="text/javascript" src="../Lib/angular/angular.min.js"></script>
+    <!--<script type="text/javascript" src="../Lib/angular/angular.js"></script>-->
+    <script type="text/javascript" src="../BL/services.js"></script>
+    <script type="text/javascript" src="../BL/appControllers.js"></script>
+    <script type="text/javascript" src="../BL/Pronoun.js"></script>
+    <script type="text/javascript" src="../BL/VerbsConjugator.js"></script>
+    <script type="text/javascript" src="../BL/Verb.js"></script>
+    <link type="text/css" href="styles.css" rel="stylesheet">
+</head>
+<body>
+    <div class="mainContainer" ng-controller="MainCtrl">
+        <div class="verb withBigBorder">{{getCurrentVerbText()}}
+          <div class="verbTranslation">[{{currentVerb.translation}}]</div>
+        </div>
+        <div class="testForm">
+            <div class="pronounText withMidBorder">{{currentPronoun.name}}</div>
+            <div class="testInput">
+                <input type="text" ng-model="verbFormInput" ng-change="resetCheckResult()">
+                <div  class="checkRes">
+                    <img ng-show="checkResult.isInputCorrect" src="../Data/check_mark_green.jpeg" />
+                    <img ng-show="checkResult && !checkResult.isInputCorrect" src="../Data/red_exclamation.jpeg" />
+                </div>
+            </div>
+            <div class="correctForm" ng-show="needToShowCorrectAnswer()">{{checkResult.correctForm}}</div>
+        </div>
+        <div class="bottomPanel">
+            <input id="checkBtn"  class="button" type="button" value="Check" ng-click="check()" ng-show="!loading" />
+            <input id="nextBtn"  class="button" type="button" value="Next ->" ng-click="setNewTest()" ng-show="!loading"/>
+        </div>
+    </div>
+</body>
+</html>

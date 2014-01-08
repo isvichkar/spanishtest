@@ -1,0 +1,31 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title>Tests</title>
+    <script type="text/javascript" src="../BL/VerbsConjugator.js"></script>
+    <script type="text/javascript">
+        var conjugator = new VerbsConjugator();
+        function conjugate() {
+            var sourceText = document.getElementById('source').value;
+            var pronoun = {
+                name: 'Yo',
+                getConjugatedEnding: function(infinitiveEnding) {
+                    return 'o';
+                }
+            };
+            var verb = {
+                text: sourceText,
+                type: 'regular'
+            };
+            var resultText = conjugator.Conjugate(verb, pronoun);
+            document.getElementById('result').value = resultText;
+        };
+    </script>
+</head>
+<body>
+    <input type="text" id="source">
+    <input type="text" id="result">
+    <input type="button" value="conjugate" onclick="conjugate();">
+</body>
+</html>
